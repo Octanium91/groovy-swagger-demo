@@ -29,10 +29,10 @@ class ExampleController {
     @Operation(summary = "Get user by path variable")
     @ApiResponses([
             @ApiResponse(responseCode = "200", description = "Returns user entity",
-                    content = [ @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = UserEntity.class)), ]),
+                    content = [@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserEntity.class)),]),
             @ApiResponse(responseCode = "404", description = "User not found",
-                    content = [ @Content, ])
+                    content = [@Content,])
     ])
     @GetMapping('/user/{name}')
     UserEntity userNameFromPathVariable(@Parameter(description = "You can find only user with name 'Adam'") @PathVariable String name) {
@@ -50,10 +50,10 @@ class ExampleController {
     @Operation(summary = "Get user by request param")
     @ApiResponses([
             @ApiResponse(responseCode = "200", description = "Return user entity",
-                    content = [ @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = UserEntity.class)) ]),
+                    content = [@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserEntity.class))]),
             @ApiResponse(responseCode = "404", description = "User not found",
-                    content = [ @Content, ])
+                    content = [@Content,])
     ])
     @GetMapping('/user')
     UserEntity userNameFromRequestParam(@Parameter(description = "You can find only user with name 'Adam'") @RequestParam String name) {

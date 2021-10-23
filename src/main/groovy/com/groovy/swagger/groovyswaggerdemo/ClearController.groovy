@@ -2,7 +2,6 @@ package com.groovy.swagger.groovyswaggerdemo
 
 import com.groovy.swagger.groovyswaggerdemo.model.UserEntity
 import groovy.util.logging.Slf4j
-import io.swagger.v3.oas.annotations.Parameter
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
