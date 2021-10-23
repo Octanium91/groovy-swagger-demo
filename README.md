@@ -15,3 +15,11 @@ Simple example use open api with swagger on groovy (java) :)
 
  - [**ExampleController.groovy**](https://github.com/Octanium91/groovy-swagger-demo/blob/master/src/main/groovy/com/groovy/swagger/groovyswaggerdemo/ExampleController.groovy) - controller with described documentation
  - [**ClearController.groovy**](https://github.com/Octanium91/groovy-swagger-demo/blob/master/src/main/groovy/com/groovy/swagger/groovyswaggerdemo/ClearController.groovy) - clean controller WITHOUT described documentation
+
+ ## **Fix** swagger ui freez\lag\hang\loop on open request
+
+ - use dependencie **springdoc-openapi-ui** verson 1.5.XX or higher
+ - add annotation **@JsonIgnoreProperties(["metaClass"])** for yours objects\models\dto *(which are used in controllers)*
+<br/>
+<img src="./fix-swagger-freez.jpg" width="553">
+<br/>
