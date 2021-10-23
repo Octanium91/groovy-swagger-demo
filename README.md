@@ -8,7 +8,7 @@ Simple example use open api with swagger on groovy (java) :)
 
  ## Demo launch
 
- - start **GroovySwaggerDemoApplication.groovy** (Java 11)
+ - start [**GroovySwaggerDemoApplication.groovy**](https://github.com/Octanium91/groovy-swagger-demo/blob/master/src/main/groovy/com/groovy/swagger/groovyswaggerdemo/GroovySwaggerDemoApplication.groovy) *(Java 11)*
  - Go to [http://localhost:9666/swagger/ui/](http://localhost:9666/swagger/ui/)
 
  ## Controllers
