@@ -3,6 +3,8 @@
 Simple example use open api with swagger on groovy (java) :)
 <br/>
 <br/>
+
+[Demo page on octanium91.github.io *("Try it out" not works!)*](https://octanium91.github.io/p/groovy-swagger-demo/)
 <img src="./scr-shot.jpg" width="1690">
 <br/>
 
