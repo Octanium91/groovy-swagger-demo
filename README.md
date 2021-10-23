@@ -18,7 +18,7 @@ Simple example use open api with swagger on groovy (java) :)
 
  ## **Fix** swagger ui freez\lag\hang\loop on open request
 
- - use dependencie [**springdoc-openapi-ui**](https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui) verson 1.5.XX or higher
+ - use dependence [**springdoc-openapi-ui**](https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui) verson 1.5.xx or higher
  - add annotation **@JsonIgnoreProperties(["metaClass"])** for yours objects\models\dto *(which are used in controllers)*
 <br/>
 <img src="./fix-swagger-freez.jpg" width="553">
