@@ -22,20 +22,39 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
 
 @Slf4j
-@Tag(name = "Example controller")
+@Tag(
+        name = "Example controller",
+        description = "in this controller described documentation"
+)
 @RestController
 class ExampleController {
 
-    @Operation(summary = "Get user by path variable")
+    @Operation(
+            summary = "Get user by path variable",
+            description = "return user entity"
+    )
     @ApiResponses([
-            @ApiResponse(responseCode = "200", description = "Returns user entity",
-                    content = [@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = UserEntity.class)),]),
-            @ApiResponse(responseCode = "404", description = "User not found",
-                    content = [@Content,])
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Returns user entity",
+                    content = [
+                            @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = UserEntity.class)
+                            ),
+                    ]
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "User not found",
+                    content = [@Content]
+            )
     ])
     @GetMapping('/user/{name}')
-    UserEntity userNameFromPathVariable(@Parameter(description = "You can find only user with name 'Adam'") @PathVariable String name) {
+    UserEntity userNameFromPathVariable(
+            @Parameter(description = "You can find only user with name 'Adam'")
+            @PathVariable String name
+    ) {
         log.info("Get user name ${name} from path variable")
         if (name.toLowerCase() == "adam") {
             new UserEntity(
@@ -47,16 +66,32 @@ class ExampleController {
         }
     }
 
-    @Operation(summary = "Get user by request param")
+    @Operation(
+            summary = "Get user by request param",
+            description = "return user entity"
+    )
     @ApiResponses([
-            @ApiResponse(responseCode = "200", description = "Return user entity",
-                    content = [@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = UserEntity.class))]),
-            @ApiResponse(responseCode = "404", description = "User not found",
-                    content = [@Content,])
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Return user entity",
+                    content = [
+                            @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = UserEntity.class)
+                            )
+                    ]
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "User not found",
+                    content = [@Content]
+            )
     ])
     @GetMapping('/user')
-    UserEntity userNameFromRequestParam(@Parameter(description = "You can find only user with name 'Adam'") @RequestParam String name) {
+    UserEntity userNameFromRequestParam(
+            @Parameter(description = "You can find only user with name 'Adam'")
+            @RequestParam String name
+    ) {
         log.info("Get user name ${name} from request param")
         if (name.toLowerCase() == "adam") {
             new UserEntity(
@@ -68,12 +103,22 @@ class ExampleController {
         }
     }
 
-    @Operation(summary = "Get users list")
-    @ApiResponses([
-            @ApiResponse(responseCode = "200", description = "Return users list",
-                    content = [@Content(mediaType = "application/json",
-                            array = @ArraySchema(schema = @Schema(implementation = UserEntity.class)))])
-    ])
+    @Operation(
+            summary = "Get users list",
+            description = "return users list"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Return users list",
+            content = [
+                    @Content(
+                            mediaType = "application/json",
+                            array = @ArraySchema(
+                                    schema = @Schema(implementation = UserEntity.class)
+                            )
+                    )
+            ]
+    )
     @GetMapping('/user/list')
     List<UserEntity> userNames() {
         log.info("Get users list")
@@ -86,39 +131,64 @@ class ExampleController {
         )]
     }
 
-    @Operation(summary = "Create user")
-    @ApiResponses([
-            @ApiResponse(responseCode = "200", description = "User created",
-                    content = [@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = UserEntity.class))])
-    ])
+    @Operation(
+            summary = "Create user",
+            description = "create user entity"
+    )
+    @ApiResponse(responseCode = "200", description = "User created",
+            content = [
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserEntity.class)
+                    )
+            ]
+    )
     @PutMapping('/user')
-    UserEntity addUser(@RequestBody UserEntity userEntity) {
+    UserEntity addUser(
+            @RequestBody UserEntity userEntity
+    ) {
         log.info("User ${userEntity?.name} is created!")
         userEntity
     }
 
-    @Operation(summary = "Save user")
-    @ApiResponses([
-            @ApiResponse(responseCode = "200", description = "User saved",
-                    content = [@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = UserEntity.class))])
-    ])
+    @Operation(
+            summary = "Save user",
+            description = "save user entity"
+    )
+    @ApiResponse(responseCode = "200", description = "User saved",
+            content = [
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserEntity.class)
+                    )
+            ]
+    )
     @PostMapping('/user')
-    UserEntity saveUser(@RequestBody UserEntity userEntity) {
+    UserEntity saveUser(
+            @RequestBody UserEntity userEntity
+    ) {
         log.info("User ${userEntity?.name} is created!")
         userEntity
     }
 
-    @Operation(summary = "Delete user")
+    @Operation(summary = "Delete user", description = "delete user entity")
     @ApiResponses([
-            @ApiResponse(responseCode = "200", description = "User deleted",
-                    content = [@Content]),
-            @ApiResponse(responseCode = "404", description = "User not found",
-                    content = [@Content])
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "User deleted",
+                    content = [@Content]
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "User not found",
+                    content = [@Content]
+            )
     ])
     @DeleteMapping('/user')
-    void deleteUserFromRequestParam(@Parameter(description = "You can delete only user with name 'Adam'") @RequestParam String name) {
+    void deleteUserFromRequestParam(
+            @Parameter(description = "You can delete only user with name 'Adam'")
+            @RequestParam String name
+    ) {
         if (name.toLowerCase() == "adam") {
             log.info("User with name ${name} is deleted!")
         } else {
